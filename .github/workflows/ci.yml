@@ -21,5 +21,6 @@ jobs:
 
       - name: Build with Gradle
         run: |
+          sed -i 's/\r$//' ./gradlew
           chmod +x ./gradlew
           ./gradlew bootJar
