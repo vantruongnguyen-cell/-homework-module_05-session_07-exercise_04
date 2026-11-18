@@ -1,0 +1,17 @@
+services:
+  github-runner:
+    image: myoung34/github-runner:latest
+    container_name: quickbite-restaurant-runner
+    restart: unless-stopped
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    environment:
+      REPO_URL: https://github.com/vantruongnguyen-cell/-homework-module_05-session_07-exercise_04
+      ACCESS_TOKEN: ${GITHUB_ACCESS_TOKEN}
+      RUNNER_NAME: quickbite-runner-01
+      RUNNER_WORKDIR: /tmp/runner
+      LABELS: quickbite,restaurant-runner
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/github-runner:/tmp/runner
